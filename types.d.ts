@@ -12,13 +12,14 @@ type Billboard = {
 
 type Products = {
     id:string,
-    category:Category,
+    categories:Category,
+    price:number,
     name:string,
-    color:string,
+    color:Color,
     size:Size,
     color:Color,
-    isFeatured:boolean,
-    imagees:Image[]
+    Featured:boolean,
+    Image:Image[]
 }
 
 type Image = {

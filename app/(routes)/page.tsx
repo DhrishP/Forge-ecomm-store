@@ -8,8 +8,9 @@ import ProductList from '@/components/product-list'
 
 const RootPage =async () => {
   const BillData = await getBillboard("clkd2o7rs0001vt28udt0gm8k")
-  const ProductsData = await getProducts({isFeatured:true})
+  const ProductsData = await getProducts({Featured:true})
   return (
+    <div className='pb-20'>
  <Container>
     <div className=' pb-10'>
           <Billboard data={BillData}/>
@@ -18,6 +19,7 @@ const RootPage =async () => {
       <ProductList title="Featured Products" items={ProductsData}/>
     </div>
     </Container>
+    </div>
   )
 }
 
