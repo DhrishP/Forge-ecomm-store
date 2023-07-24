@@ -4,13 +4,12 @@ import Link from "next/link";
 import Mainnav from "./main-nav";
 import getCategories from "@/data-fetchers/get-categories";
 
-export const revalidate = 0;
-
 const Navbar = async () => {
-  const CategoriesNav = await getCategories();
-  console.log(CategoriesNav)
+  const data = await getCategories();
+
+
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-base-100 border-b-gray-500 border">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn text-neutral btn-ghost lg:hidden">
@@ -33,20 +32,24 @@ const Navbar = async () => {
             tabIndex={0}
             className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
           >
-           <Mainnav data={CategoriesNav}/>
+            <Mainnav data={data} />
           </ul>
         </div>
-        <Link href="" className="  font-black ml-4  text-xl">
+        <Link href="" className="  font-black ml-4   text-2xl">
           STORE
         </Link>
         <div className=" hidden lg:flex ml-4 font-semibold  ">
-          <Mainnav data={CategoriesNav} />
+          <Mainnav data={data} />
         </div>
       </div>
 
-      <div className="navbar-end  ">
-        <Link href="" className="btn btn-square btn-neutral ">
-          <ShoppingBag />
+      <div className="navbar-end mr-8  ">
+        <Link
+          href=""
+          className="btn flex rounded-full px-5  hover:btn-accent btn-neutral  "
+        >
+          <ShoppingBag className="h-5 w-5" />
+          <div className="text-sm"> 0</div>
         </Link>
       </div>
     </div>
