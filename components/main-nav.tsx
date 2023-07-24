@@ -6,6 +6,7 @@ import Link from "next/link";
 type MainnavProps = {
   data: Category[];
 };
+
 const Mainnav = ({ data }: MainnavProps) => {
   const pathname = usePathname();
   const routes = data.map((route) => ({
@@ -15,12 +16,12 @@ const Mainnav = ({ data }: MainnavProps) => {
   }));
   return (
     <>
-      <ul className="menu menu-horizontal px-1">
+      <ul className="menu  menu-horizontal flex items-center  px-1 space-x-4">
         {routes.map((item) => (
           <Link
             className={cn(
               "",
-              item.active ? "text-neutral-focus" : "text-gray-500"
+              item.active ? "text-accent-focus" : "text-gray-500 hover:text-accent-focus"
             )}
             key={item.href}
             href={item.href}

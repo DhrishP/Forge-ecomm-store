@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: 'Ecomm-Store',
   description: 'A e-commerce store powered by ecomm-dashboard api',
 }
-
+export const revalidate = 0;
 export default function RootLayout({
   children,
 }: {
