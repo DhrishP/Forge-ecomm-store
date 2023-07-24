@@ -5,7 +5,7 @@ type queryprops = {
     CategoriesId? : string,
     colorId? : string,
     sizesId? : string,
-    isFeatured? : boolean,
+    Featured? : boolean,
 }
 
 const getProducts = async(query:queryprops) => {
@@ -15,11 +15,11 @@ const getProducts = async(query:queryprops) => {
             colorId:query.colorId,
             sizesId:query.sizesId,
             CategoriesId:query.CategoriesId,
-            isFeatured:query.isFeatured,
+            Featured:query.Featured,
         }
     })
 
-  const res =await fetch(URL)
+  const res =await fetch(url)
   return res.json()
 }
 

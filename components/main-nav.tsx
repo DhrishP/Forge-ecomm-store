@@ -5,18 +5,19 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 type MainnavProps = {
   data: Category[];
+  className:string
 };
 
-const Mainnav = ({ data }: MainnavProps) => {
+const Mainnav = ({ data ,className}: MainnavProps) => {
   const pathname = usePathname();
   const routes = data.map((route) => ({
-    href: `/category/${route.id}`,
+    href: `/categories/${route.id}`,
     label: route.name,
-    active: pathname === `/category/${route.id}`,
+    active: pathname === `/categories/${route.id}`,
   }));
   return (
     <>
-      <ul className="menu  menu-horizontal flex items-center  px-1 space-x-4">
+      <ul className={cn("menu  menu-horizontal  flex   ",className)}>
         {routes.map((item) => (
           <Link
             className={cn(
