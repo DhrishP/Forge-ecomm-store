@@ -3,7 +3,7 @@ import { MouseEventHandler } from "react";
 import { cn } from "@/lib/utils";
 
 interface IconButtonProps {
-  onClick?: MouseEventHandler<HTMLButtonElement> | undefined;
+  onClick?: MouseEventHandler<HTMLButtonElement> | undefined 
   icon: React.ReactElement;
   className?: string;
 }

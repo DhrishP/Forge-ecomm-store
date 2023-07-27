@@ -5,10 +5,10 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 type MainnavProps = {
   data: Category[];
-  className:string
+  className: string;
 };
 
-const Mainnav = ({ data ,className}: MainnavProps) => {
+const Mainnav = ({ data, className }: MainnavProps) => {
   const pathname = usePathname();
   const routes = data.map((route) => ({
     href: `/categories/${route.id}`,
@@ -17,12 +17,14 @@ const Mainnav = ({ data ,className}: MainnavProps) => {
   }));
   return (
     <>
-      <ul className={cn("menu  menu-horizontal  flex   ",className)}>
+      <ul className={cn("menu  menu-horizontal  flex   ", className)}>
         {routes.map((item) => (
           <Link
             className={cn(
               "",
-              item.active ? "text-accent-focus" : "text-gray-500 hover:text-accent-focus"
+              item.active
+                ? "text-accent-focus"
+                : "text-gray-500 hover:text-accent-focus"
             )}
             key={item.href}
             href={item.href}
@@ -36,12 +38,3 @@ const Mainnav = ({ data ,className}: MainnavProps) => {
 };
 
 export default Mainnav;
-
-{
-  /* <li>
-            <Link href="">Item 1</Link>
-          </li>
-          <li>
-            <Link href="">Item 3</Link>
-          </li>*/
-}
