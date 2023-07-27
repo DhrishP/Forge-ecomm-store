@@ -5,7 +5,7 @@ import { Tab } from "@headlessui/react";
 import GalleryTab from "./gallery-tab";
 
 type Galleryprops = {
-  Images: Image[];
+  Images: Image[] | undefined;
 };
 
 export default function Gallery({ Images = [] }: Galleryprops) {

@@ -2,6 +2,7 @@ import Navbar from '@/components/navbar'
 import './globals.css'
 import type { Metadata } from 'next'
 import { Urbanist} from 'next/font/google'
+import UsePreviewProvider from '@/providers/use-preview-provider'
 
 const urbanist = Urbanist({ subsets: ['latin'] })
 
@@ -16,7 +17,9 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
+
     <html lang="en">
+      <UsePreviewProvider/>
       <body className={urbanist.className}>
         <Navbar/>
         {children}

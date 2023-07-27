@@ -50,7 +50,7 @@ const Navbar = async () => {
           className="btn flex rounded-full px-5  hover:btn-accent btn-neutral  "
         >
           <ShoppingBag className="h-5 w-5" />
-          <div className="text-sm"> 0</div>
+          <div className="text-sm">0</div>
         </Link>
       </div>
     </div>

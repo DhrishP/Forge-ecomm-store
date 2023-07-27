@@ -4,14 +4,21 @@ import Image from "next/image";
 import Currency from "./ui/currencyconv";
 import { Expand, ShoppingCart } from "lucide-react";
 import IconButton from "./ui/icon";
+import UsePreview from "@/hooks/use-preview-modal";
 type ProductCardProps = {
   data: Products;
 };
 const ProductCard = ({ data }: ProductCardProps) => {
   const router = useRouter()
+  const previewState = UsePreview()
 
  const handleClick = () =>{
       router.push(`/product/${data.id}`)
+  }
+
+  const HandleExpand =(event:React.FormEvent) =>{
+    event.stopPropagation()
+    previewState.onOpen(data)
   }
   return (
     <div onClick={handleClick} className="group  cursor-pointer shadow-sm  rounded-md border p-3 space-y-4 sm:h-full sm:w-full  h-1/2 w-[62%] mx-auto ">
@@ -25,7 +32,7 @@ const ProductCard = ({ data }: ProductCardProps) => {
     <div className="opacity-0 group-hover:opacity-100 transition absolute w-full px-6 bottom-5">
       <div className="flex gap-x-6 justify-center">
         <IconButton 
-         
+          onClick={HandleExpand}
           icon={<Expand size={20} className="text-gray-600" />}
         />
         <IconButton
