@@ -15,7 +15,7 @@ export default function Gallery({ Images = [] }: Galleryprops) {
         <Tab.Panels>
           {Images.map((image) => (
             <Tab.Panel key={image.url}>
-              <div className="card aspect-square sm:w-1/2 w-[30%]  md:w-[60%] h-1/2 overflow-hidden   ">
+              <div className="card aspect-square sm:w-1/2  md:w-[60%] h-1/2 overflow-hidden   ">
                 <figure>
                   <NextImage
                     className="object-cover aspect-square  object-center "
@@ -28,7 +28,7 @@ export default function Gallery({ Images = [] }: Galleryprops) {
             </Tab.Panel>
           ))}
         </Tab.Panels>
-        <div className="mx-auto mt-6 hidden w-full max-w-2xl sm:block lg:max-w-none">
+        <div className="mx-auto mt-6  w-full max-w-2xl sm:block lg:max-w-none">
         <Tab.List className="grid grid-cols-4 gap-6">
           {Images.map((image) => (
             <GalleryTab key={image.id} Image={image} />

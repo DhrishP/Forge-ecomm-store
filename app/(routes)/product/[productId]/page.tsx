@@ -17,8 +17,8 @@ const ProductIdPage = async ({ params }: { params: { productId: string } }) => {
     <>
       <Container>
         <div className="px-4 py-10 sm:px-6 lg:px-8 ">
-          <div className="lg:grid  lg:grid-cols-2 lg:items-start px-10 py-5 md:py-8 lg:py-10  ">
-            <div>
+          <div className="grid  md:grid-cols-2 lg:items-start px-10 py-5 md:py-8 lg:py-10  ">
+            <div className="">
               <Gallery Images={product.Image} />
             </div>
             <div>
