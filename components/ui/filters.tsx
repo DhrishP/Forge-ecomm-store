@@ -14,7 +14,8 @@ const Filters = ({ data, searchKey, name }: FiltersProps) => {
   const searchParams = useSearchParams();
   const router = useRouter();
 
-  const HandleClick = (id: string) => {
+  const HandleClick = (id: string,event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault(); 
     const ParseUrl = qs.parse(searchParams.toString());
 
     const query = {
@@ -31,7 +32,10 @@ const Filters = ({ data, searchKey, name }: FiltersProps) => {
       },
       { skipNull: true }
     );
-    router.push(url);
+    // Manually update the URL without a full page reload
+
+  // Trigger the route change using Next.js router
+  router.push(url,{scroll:false});
     
   };
 
@@ -45,8 +49,8 @@ const Filters = ({ data, searchKey, name }: FiltersProps) => {
             <button
               key={filter.id}
               
-              onClick={() => {
-                HandleClick(filter.id);
+              onClick={(e) => {
+                HandleClick(filter.id,e);
               }}
               className={cn(
                 "btn btn-sm rounded-sm mr-4 mb-2",
