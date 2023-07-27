@@ -12,7 +12,7 @@ const ProductIdPage = async ({ params }: { params: { productId: string } }) => {
   const relatedItems = await getProducts({
     CategoriesId: product.categories?.id,
   });
-
+  
   return (
     <>
       <Container>
