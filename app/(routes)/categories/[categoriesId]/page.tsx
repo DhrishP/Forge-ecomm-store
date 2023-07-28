@@ -1,5 +1,5 @@
 import MobileFilters from "@/components/mobile-filters";
-import ProductList from "@/components/product-list";
+import ProductList from "@/components/ui/product-list";
 import Billboard from "@/components/ui/billboard";
 import Container from "@/components/ui/container";
 import Filters from "@/components/ui/filters";
@@ -21,9 +21,9 @@ const CategoryMain = async ({ params, searchParams }: CategoryMainProps) => {
     sizesId: searchParams.sizesId,
     CategoriesId: params.categoriesId,
   });
-  const sizes:Size[] = await getSizes();
-  const colors:Color[] = await getColors();
-  const category:Category = await getCategory(params.categoriesId);
+  const sizes: Size[] = await getSizes();
+  const colors: Color[] = await getColors();
+  const category: Category = await getCategory(params.categoriesId);
 
   return (
     <div className="bg-base-100 py-10">
@@ -32,14 +32,14 @@ const CategoryMain = async ({ params, searchParams }: CategoryMainProps) => {
         <div className="px-4 sm:px-6 md:px-8">
           <div className="md:grid grid-cols-5 gap-6 ">
             <div className="lg:hidden">
-                <MobileFilters sizes={sizes} colors={colors} />
+              <MobileFilters sizes={sizes} colors={colors} />
             </div>
             <div className="hidden lg:block">
-            <Filters data={sizes} name="Sizes" searchKey="sizesId"/>
-            <Filters data={colors} name="Colors" searchKey="colorId"/>
+              <Filters data={sizes} name="Sizes" searchKey="sizesId" />
+              <Filters data={colors} name="Colors" searchKey="colorId" />
             </div>
-            <div className="col-span-4" >
-              <ProductList title="Products" items={products}/>
+            <div className="col-span-4">
+              <ProductList title="Products" items={products} />
             </div>
           </div>
         </div>

@@ -1,7 +1,7 @@
 import Gallery from "@/components/gallery";
-import ProductList from "@/components/product-list";
+import ProductList from "@/components/ui/product-list";
 import Container from "@/components/ui/container";
-import Currency from "@/components/ui/currencyconv";
+import Currency from "@/lib/currencyconv";
 import getProduct from "@/data-fetchers/get-product";
 import getProducts from "@/data-fetchers/get-products";
 import { ShoppingCart } from "lucide-react";
@@ -12,7 +12,7 @@ const ProductIdPage = async ({ params }: { params: { productId: string } }) => {
   const relatedItems = await getProducts({
     CategoriesId: product.categories?.id,
   });
-  
+
   return (
     <>
       <Container>
