@@ -1,13 +1,12 @@
-import { ShoppingBag } from "lucide-react";
+
 import React from "react";
 import Link from "next/link";
 import Mainnav from "./main-nav";
 import getCategories from "@/data-fetchers/get-categories";
-
+import ShoppingIcon from "./shoppingIcon";
 
 const Navbar = async () => {
   const data = await getCategories();
-
 
   return (
     <div className="navbar bg-base-100 border-b-gray-500 border">
@@ -33,10 +32,13 @@ const Navbar = async () => {
             tabIndex={0}
             className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
           >
-            <Mainnav className="flex-col font-semibold space-y-2  " data={data} />
+            <Mainnav
+              className="flex-col font-semibold space-y-2  "
+              data={data}
+            />
           </ul>
         </div>
-        <Link  href="/" className="  font-black ml-4   text-2xl">
+        <Link href="/" className="  font-black ml-4   text-2xl">
           STORE
         </Link>
         <div className=" hidden lg:flex ml-4 font-semibold  ">
@@ -44,14 +46,8 @@ const Navbar = async () => {
         </div>
       </div>
 
-      <div className="navbar-end mr-1 lg:mr-8 md:mr-4  ">
-        <Link
-          href=""
-          className="btn flex rounded-full px-5  hover:btn-accent btn-neutral  "
-        >
-          <ShoppingBag className="h-5 w-5" />
-          <div className="text-sm">0</div>
-        </Link>
+      <div className="navbar-end mr-1 lg:mr-5 md:mr-3  ">
+        <ShoppingIcon />
       </div>
     </div>
   );
