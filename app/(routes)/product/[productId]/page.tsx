@@ -6,7 +6,7 @@ import getProduct from "@/data-fetchers/get-product";
 import getProducts from "@/data-fetchers/get-products";
 import { ShoppingCart } from "lucide-react";
 import React from "react";
-
+export const revalidate = 0;
 const ProductIdPage = async ({ params }: { params: { productId: string } }) => {
   const product: Products = await getProduct(params.productId);
   const relatedItems = await getProducts({
