@@ -30,7 +30,6 @@ type UseCartProps = {
       },
       removeAll: () => {
         set({ items: [] });
-        toast.success("All items deleted");
       },
     }),
     {

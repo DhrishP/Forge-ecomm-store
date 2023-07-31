@@ -7,7 +7,7 @@ import React from "react";
 import ProductList from "@/components/ui/product-list";
 
 const RootPage = async () => {
-  const BillData = await getBillboard("clkd2o7rs0001vt28udt0gm8k");
+  const BillData = await getBillboard("clkpxfbc90002vt6s23aabitw");
   const ProductsData = await getProducts({ Featured: true });
   return (
     <div className="pb-20">

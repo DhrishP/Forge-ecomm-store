@@ -15,6 +15,7 @@ type CategoryMainProps = {
     sizesId: string;
   };
 };
+export const revalidate = 0
 const CategoryMain = async ({ params, searchParams }: CategoryMainProps) => {
   const products = await getProducts({
     colorId: searchParams.colorId,
