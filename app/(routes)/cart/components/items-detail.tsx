@@ -37,18 +37,18 @@ const ItemDetail = () => {
 
   return ( 
     <div
-      className="mt-16 rounded-lg bg-base-100 px-4 py-6 sm:p-6 lg:col-span-5 lg:mt-0 lg:p-8"
+      className="mt-16 text-accent-focus rounded-lg bg-base-100 px-4 py-6 sm:p-6 lg:col-span-5 lg:mt-0 lg:p-8"
     >
-      <h2 className="text-lg font-medium text-neutral-focus">
+      <h2 className="text-lg font-medium text-accent">
         Order Details
       </h2>
       <div className="mt-6 space-y-4">
         <div className="flex items-center justify-between border-t border-base-100 pt-4">
-          <div className="text-base font-medium text-neutral-focus">Order total</div>
+          <div className="text-base font-medium text-accent">Order total</div>
          <Currency value={totalPrice} />
         </div>
       </div>
-      <button onClick={onCheckout} disabled={items.length === 0} className="btn w-full mt-6">
+      <button onClick={onCheckout} disabled={items.length === 0} className="btn w-full btn-primary mt-6">
         Checkout
       </button>
     </div>

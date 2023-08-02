@@ -5,6 +5,7 @@ import { Urbanist} from 'next/font/google'
 import UsePreviewProvider from '@/providers/use-preview-provider'
 import ToastProvider from '@/providers/react-toast-provider'
 
+
 const urbanist = Urbanist({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
@@ -19,7 +20,7 @@ export default function RootLayout({
 }) {
   return (
 
-    <html lang="en">
+    <html lang="en" data-theme="cupcake">
       <UsePreviewProvider/>
       <body className={urbanist.className}>
         <Navbar/>

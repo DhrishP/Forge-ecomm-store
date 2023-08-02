@@ -4,6 +4,7 @@ import Link from "next/link";
 import Mainnav from "./main-nav";
 import getCategories from "@/data-fetchers/get-categories";
 import ShoppingIcon from "./shoppingIcon";
+import ThemeButton from "./theme-button";
 
 const Navbar = async () => {
   const data = await getCategories();
@@ -11,8 +12,8 @@ const Navbar = async () => {
   return (
     <div className="navbar bg-base-100 border-b-gray-500 border">
       <div className="navbar-start">
-        <div className="dropdown">
-          <label tabIndex={0} className="btn text-neutral btn-ghost lg:hidden">
+        <div className="dropdown ">
+          <label tabIndex={0} className="btn text-accent btn-ghost lg:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -46,7 +47,8 @@ const Navbar = async () => {
         </div>
       </div>
 
-      <div className="navbar-end mr-1 lg:mr-5 md:mr-3  ">
+      <div className="navbar-end mr-1 lg:mr-5 md:mr-3 gap-x-2 flex items-center  ">
+        <ThemeButton/>
         <ShoppingIcon />
       </div>
     </div>
