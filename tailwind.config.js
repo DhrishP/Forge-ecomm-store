@@ -8,5 +8,8 @@ module.exports = {
     "./src/**/*.{ts,tsx}",
   ],
   theme: {},
+  daisyui:{
+    themes:["aqua","luxury","night","winter","retro","valentine","forest"]
+  },
   plugins: [require("daisyui")],
 };

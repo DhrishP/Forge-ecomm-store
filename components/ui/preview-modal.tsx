@@ -10,7 +10,7 @@ const PreviewModal = () => {
   const productData = UsePreview((state) => state.data);
   return (
     <Modal onClose={previewState.onClose} open={previewState.Open}>
-      <div className="grid w-full grid-cols-1 items-start gap-x-6 gap-y-8 sm:grid-cols-12 lg:gap-x-8">
+      <div className="grid text-accent-focus w-full grid-cols-1 items-startgap-x-6 gap-y-8 sm:grid-cols-12 lg:gap-x-8">
         <div className="sm:col-span-4  lg:col-span-6">
           <Gallery Images={productData?.Image} />
         </div>

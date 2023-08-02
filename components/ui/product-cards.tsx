@@ -32,7 +32,7 @@ const ProductCard = ({ data }: ProductCardProps) => {
       onClick={handleClick}
       className="group  cursor-pointer shadow-sm  rounded-md border p-3 space-y-4 sm:h-full sm:w-full  h-1/2 w-[62%] mx-auto "
     >
-      <div className="aspect-square rounded-xl bg-gray-100 relative">
+      <div className="aspect-square rounded-xl bg-base-200 relative">
         <Image
           src={data.Image?.[0]?.url}
           alt=""
@@ -43,11 +43,11 @@ const ProductCard = ({ data }: ProductCardProps) => {
           <div className="flex gap-x-6 justify-center">
             <IconButton
               onClick={HandleExpand}
-              icon={<Expand size={20} className="text-gray-600" />}
+              icon={<Expand size={20} className="text-accent" />}
             />
             <IconButton
               onClick={HandleCart}
-              icon={<ShoppingCart size={20} className="text-gray-600" />}
+              icon={<ShoppingCart size={20} className="text-accent" />}
             />
           </div>
         </div>
