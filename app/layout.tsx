@@ -20,7 +20,7 @@ export default function RootLayout({
 }) {
   return (
 
-    <html lang="en" data-theme="cupcake">
+    <html lang="en" data-theme="winter">
       <UsePreviewProvider/>
       <body className={urbanist.className}>
         <Navbar/>
