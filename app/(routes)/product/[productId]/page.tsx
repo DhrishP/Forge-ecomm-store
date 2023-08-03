@@ -6,6 +6,7 @@ import getProduct from "@/data-fetchers/get-product";
 import getProducts from "@/data-fetchers/get-products";
 import { ShoppingCart } from "lucide-react";
 import React from "react";
+import CartButton from "./components.tsx/CartButton";
 export const revalidate = 0;
 const ProductIdPage = async ({ params }: { params: { productId: string } }) => {
   const product: Products = await getProduct(params.productId);
@@ -38,10 +39,7 @@ const ProductIdPage = async ({ params }: { params: { productId: string } }) => {
                   style={{ backgroundImage: product.color.value }}
                 ></div>
               </div>
-              <button className="btn-neutral rounded-full hover:btn-accent py-2  btn btn-sm    mt-4">
-                Add to cart
-                <ShoppingCart className="h-4 w-4" />
-              </button>
+              <CartButton product={product}/>
             </div>
           </div>
           <hr className="my-10" />
