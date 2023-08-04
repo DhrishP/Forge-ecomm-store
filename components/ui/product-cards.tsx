@@ -30,9 +30,9 @@ const ProductCard = ({ data }: ProductCardProps) => {
   return (
     <div
       onClick={handleClick}
-      className="group  cursor-pointer shadow-sm  rounded-md border p-3 space-y-4 sm:h-full sm:w-full  h-1/2 w-[62%] mx-auto "
+      className="group  cursor-pointer shadow-sm  rounded-md border p-3 space-y-4 h-full  sm:w-full  w-[62%] mx-auto "
     >
-      <div className="aspect-square rounded-xl bg-base-200 relative">
+      <div className="aspect-square rounded-xl  relative">
         <Image
           src={data.Image?.[0]?.url}
           alt=""
@@ -58,7 +58,6 @@ const ProductCard = ({ data }: ProductCardProps) => {
           {data.categories?.name}
         </p>
       </div>
-
       <div className="flex items-center justify-between">
         <Currency value={data?.price} />
       </div>
