@@ -9,7 +9,8 @@
 
 #### Libraries:-
 1. [daisyUI](https://daisyui.com/)
-2. [stripe](https://stripe.com)
-3. [headless-react](https://headlessui.com/)
+1. [stripe](https://stripe.com)
+1. [zustand](https://zustand.com)
+1. [headless-react](https://headlessui.com/)
 
 
