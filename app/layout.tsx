@@ -4,6 +4,7 @@ import type { Metadata } from 'next'
 import { Urbanist} from 'next/font/google'
 import UsePreviewProvider from '@/providers/use-preview-provider'
 import ToastProvider from '@/providers/react-toast-provider'
+import Chat from '@/components/chat'
 
 
 const urbanist = Urbanist({ subsets: ['latin'] })
@@ -24,6 +25,7 @@ export default function RootLayout({
       <UsePreviewProvider/>
       <body className={urbanist.className}>
         <Navbar/>
+        <Chat/>
         <ToastProvider/>
         {children}
         </body>
