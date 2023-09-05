@@ -7,7 +7,7 @@ import ToastProvider from '@/providers/react-toast-provider'
 import Chat from '@/components/chat'
 import QueryProvider from '@/providers/react-query-provider'
 
-
+export const runtime = "edge"
 const urbanist = Urbanist({ subsets: ['latin'] })
 
 export const metadata: Metadata = {

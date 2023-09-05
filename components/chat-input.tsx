@@ -3,7 +3,7 @@ import { useMutation } from "@tanstack/react-query";
 import React, { useState } from "react";
 import TextareaAutosize from "react-textarea-autosize";
 import { nanoid } from "nanoid";
-import { Message } from "./validators/message";
+import { Message } from "../lib/validators/message";
 type ChatInputProps = {
   className: string;
 };
@@ -17,7 +17,7 @@ const ChatInput = ({ className }: ChatInputProps) => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(message),
+        body: JSON.stringify({messages:[message]}),
       });
     },
   });
