@@ -15,4 +15,8 @@
 1. [zustand](https://zustand.com)
 1. [headless-react](https://headlessui.com/)
 
+### Upcoming features :-
+1. AI Chatbot assistant(currently working)
+1. Coupons technology using stripe
+
 
