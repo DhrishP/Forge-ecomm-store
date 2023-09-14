@@ -9,8 +9,13 @@ import ToastProvider from '@/providers/react-toast-provider'
 const urbanist = Urbanist({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Ecomm-Store',
-  description: 'A e-commerce store powered by ecomm-dashboard api',
+  title: 'ForgeStore',
+  description: 'A e-commerce store powered by ForgeCommerce api',
+  icons:{
+    icon:"/icons/StoreIcon1.png",
+    apple:"/icons/StoreIcon1.png",
+  }
+  
 }
 export const revalidate = 0;
 export default function RootLayout({
