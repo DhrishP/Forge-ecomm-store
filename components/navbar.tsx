@@ -40,10 +40,10 @@ const Navbar = async () => {
           </ul>
         </div>
         <Link href="/" className="  font-black ml-4   text-2xl">
-          STORE
+          FORGESTORE
         </Link>
         <div className=" hidden lg:flex ml-4 font-semibold  ">
-          <Mainnav className="items-center space-x-4 px-1" data={data} />
+          <Mainnav className="items-center space-x-4  px-1" data={data} />
         </div>
       </div>
 
