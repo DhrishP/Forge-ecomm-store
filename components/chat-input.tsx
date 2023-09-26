@@ -53,12 +53,12 @@ const ChatInput = ({ className }: ChatInputProps) => {
               )}
               {message.content.split("\n").map((item: string) => {
                 if (item === "") {
-                  return <p>&nbsp;</p>;
+                  return <p key={item}>&nbsp;</p>;
                 } else {
                   if (message.role === "assistant") {
                     return (
                       <>
-                        <div className="bg-blue-600 inline-block  text-white dark:bg-blue-400 p-2 rounded-lg text-left">
+                        <div key={item} className="bg-blue-600 inline-block  text-white dark:bg-blue-400 p-2 rounded-lg text-left">
                           <p className="text-sm ">{item}</p>
                         </div>
                       </>
@@ -66,7 +66,7 @@ const ChatInput = ({ className }: ChatInputProps) => {
                   } else {
                     return (
                       <>
-                        <div className="bg-white inline-block text-end p-2 rounded-lg ">
+                        <div key={item} className="bg-white inline-block text-end p-2 rounded-lg ">
                           <p className="text-sm  ">{item}</p>
                         </div>
                       </>
