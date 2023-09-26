@@ -1,51 +1,85 @@
 import { cn } from "@/lib/utils";
-import { useMutation } from "@tanstack/react-query";
-import React, { useState } from "react";
+import React from "react";
 import TextareaAutosize from "react-textarea-autosize";
-import { nanoid } from "nanoid";
-import { Message } from "../lib/validators/message";
+
+import { useChat } from "ai/react";
+import { Send } from "lucide-react";
+import { Message } from "ai";
 type ChatInputProps = {
   className: string;
 };
 
 const ChatInput = ({ className }: ChatInputProps) => {
-  const [input, setInput] = useState("");
-  const { mutate: sendMessage, isLoading } = useMutation({
-    mutationFn: async (message: Message) => {
-      const res = await fetch("/api/chatbot", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({messages:[message]}),
-      });
-    },
-  });
+  const { input, handleInputChange, handleSubmit, isLoading, messages } =
+    useChat();
+
+  console.log("messages", messages);
 
   return (
-    <div className={cn(`border-t border-primary-content`, className)}>
-      <TextareaAutosize
-        rows={2}
-        maxRows={4}
-        onKeyDown={(e) => {
-          if (e.key === "Enter" && !e.shiftKey) {
-            e.preventDefault();
-
-            const message: Message = {
-              id: nanoid(),
-              isUserMessage: true,
-              text: input,
-            };
-
-            sendMessage(message);
-          }
-        }}
-        value={input}
-        autoFocus
-        onChange={(e) => setInput(e.target.value)}
-        placeholder="Type a message..."
-        className="peer disabled:opacity-50  resize-none block pr-14 px-2 w-full border-0 bg-zinc-100  py-1.5 text-primary  text-sm sm:leading-6"
-      />
+    <div className="overflow-y-scroll">
+      <form
+        onSubmit={handleSubmit}
+        className={cn(
+          `border-t border-primary-content space-y-2 flex flex-col `,
+          className
+        )}
+      >
+        <TextareaAutosize
+          rows={2}
+          maxRows={4}
+          value={input}
+          autoFocus
+          onChange={handleInputChange}
+          placeholder="Type a message..."
+          className="peer disabled:opacity-50  resize-none block pr-14 px-2 w-full border-0 bg-zinc-100  py-1.5 text-primary  text-sm sm:leading-6"
+        />
+        <button
+          type="submit"
+          className="btn rounded-none mr-1 relative bottom-[2.6rem]   btn-sm self-end bg-zinc-100 "
+        >
+          <Send className="w-4 h-4 text-secondary" />
+        </button>
+      </form>
+      {messages.length > 0 ? (
+        <span className="mx-2 text-primary relative bottom-10 ">
+          {messages.map((message: Message) => (
+            <div key={message.id}>
+              {message.role === "assistant" ? (
+                <h3 className="text-sm font-semibold mt-2">AI Assistant</h3>
+              ) : (
+                <h3 className="text-sm font-semibold mt-2  mr-1">
+                  You
+                </h3>
+              )}
+              {message.content.split("\n").map((item: string) => {
+                if (item === "") {
+                  return <p>&nbsp;</p>;
+                } else {
+                  if (message.role === "assistant") {
+                    return (
+                      <>
+                        <div className="bg-blue-600 inline-block  text-white dark:bg-blue-400 p-2 rounded-lg text-left">
+                          <p className="text-sm ">{item}</p>
+                        </div>
+                      </>
+                    );
+                  } else {
+                    return (
+                      <>
+                        <div className="bg-white inline-block text-end p-2 rounded-lg ">
+                          <p className="text-sm  ">{item}</p>
+                        </div>
+                      </>
+                    );
+                  }
+                }
+              })}
+            </div>
+          ))}
+        </span>
+      ) : (
+        <></>
+      )}
     </div>
   );
 };
