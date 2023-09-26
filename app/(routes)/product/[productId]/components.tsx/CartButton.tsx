@@ -15,7 +15,7 @@ const CartButton = ({
         cart.addItem(product)
     }
   return (
-    <button onClick={HandleAdd} className="btn-neutral rounded-full hover:btn-accent py-2  btn btn-sm    mt-4">
+    <button onClick={HandleAdd} className="btn-neutral rounded-full hover:btn-accent py-2  btn btn-sm   mt-4">
     Add to cart
     <ShoppingCart className="h-4 w-4" />
   </button>
