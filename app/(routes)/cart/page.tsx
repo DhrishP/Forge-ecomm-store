@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import ItemsList from "./components/items-list";
 
 const Cart = () => {
-  const [IsMounted, setIsMounted] = useState(false);
+  const [IsMounted, setIsMounted] = useState<Boolean>(false);
   const cart = useCart();
   useEffect(() => {
     setIsMounted(true);
