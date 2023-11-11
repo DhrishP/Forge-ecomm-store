@@ -5,6 +5,7 @@ import { Urbanist} from 'next/font/google'
 
 import ToastProvider from '@/providers/react-toast-provider'
 import Chat from '@/components/chat'
+import UsePreviewProvider from '@/providers/use-preview-provider'
 
 
 export const runtime = "edge"
@@ -28,7 +29,7 @@ export default function RootLayout({
   return (
 
     <html lang="en" data-theme="winter">
-
+      <UsePreviewProvider/>
       <body className={urbanist.className}>
         <Navbar/>
         <Chat/>
