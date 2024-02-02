@@ -1,6 +1,6 @@
 import Navbar from '@/components/navbar'
 import './globals.css'
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Urbanist} from 'next/font/google'
 
 import ToastProvider from '@/providers/react-toast-provider'
@@ -17,8 +17,11 @@ export const metadata: Metadata = {
   icons:{
     icon:"/icons/StoreIcon1.png",
     apple:"/icons/StoreIcon1.png",
-  }
-  
+  },
+  manifest:"/manifest.json"
+}
+export const viewport:Viewport={
+  themeColor:"#FFFFFF",
 }
 export const revalidate = 0;
 export default function RootLayout({
