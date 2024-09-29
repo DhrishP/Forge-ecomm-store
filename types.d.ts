@@ -20,6 +20,8 @@ type Products = {
     color:Color,
     Featured:boolean,
     Image:Image[]
+    description:string
+    ytURL:string
 }
 
 type Image = {

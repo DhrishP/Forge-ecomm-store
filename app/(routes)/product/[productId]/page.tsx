@@ -4,9 +4,14 @@ import Container from "@/components/ui/container";
 import Currency from "@/lib/currencyconv";
 import getProduct from "@/data-fetchers/get-product";
 import getProducts from "@/data-fetchers/get-products";
-import { ShoppingCart } from "lucide-react";
 import React from "react";
 import CartButton from "./components.tsx/CartButton";
+import ReactMarkdown from "react-markdown";
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import remarkGfm from 'remark-gfm';
+import { ComponentPropsWithoutRef } from 'react';
+
 export const revalidate = 0;
 const ProductIdPage = async ({ params }: { params: { productId: string } }) => {
   const product: Products = await getProduct(params.productId);
@@ -39,7 +44,78 @@ const ProductIdPage = async ({ params }: { params: { productId: string } }) => {
                   style={{ backgroundImage: product.color.value }}
                 ></div>
               </div>
-              <CartButton product={product}/>
+              <CartButton product={product} />
+
+              {/* Description Component */}
+              {product.description && (
+                <div className="mt-6">
+                  <h3 className="font-semibold text-lg mb-2">Description:</h3>
+                  <div className="p-4 border rounded-md bg-gray-50 prose prose-sm max-w-none">
+                    <ReactMarkdown
+                      remarkPlugins={[remarkGfm]}
+                      components={{
+                        code({
+                          node,
+                          inline,
+                          className,
+                          children,
+                          ...props
+                        }: ComponentPropsWithoutRef<"code"> & {
+                          inline?: boolean;
+                          node?: any;
+                        }) {
+                          const match = /language-(\w+)/.exec(className || '');
+                          return !inline && match ? (
+                            <SyntaxHighlighter
+                              style={vscDarkPlus as any}
+                              language={match[1]}
+                              PreTag="div"
+                              {...props}
+                            >
+                              {String(children).replace(/\n$/, '')}
+                            </SyntaxHighlighter>
+                          ) : (
+                            <code className={className} {...props}>
+                              {children}
+                            </code>
+                          );
+                        },
+                        ul: ({ node, ...props }) => <ul className="list-disc pl-6 my-4 space-y-2" {...props} />,
+                        ol: ({ node, ...props }) => <ol className="list-decimal pl-6 my-4 space-y-2" {...props} />,
+                        li: ({ node, children, ...props }) => (
+                          <li className="my-1" {...props}>
+                            <span className="inline-block">{children}</span>
+                          </li>
+                        ),
+                        p: ({ node, ...props }) => <p className="my-4 whitespace-pre-wrap" {...props} />,
+                        h1: ({ node, ...props }) => <h1 className="text-2xl font-bold my-6" {...props} />,
+                        h2: ({ node, ...props }) => <h2 className="text-xl font-semibold my-5" {...props} />,
+                        h3: ({ node, ...props }) => <h3 className="text-lg font-medium my-4" {...props} />,
+                        blockquote: ({ node, ...props }) => (
+                          <blockquote className="border-l-4 border-gray-300 pl-4 italic my-6" {...props} />
+                        ),
+                      }}
+                    >
+                      {product.description}
+                    </ReactMarkdown>
+                  </div>
+                </div>
+              )}
+
+              {/* YouTube Video Embed */}
+              {product.ytURL && (
+                <div className="mt-6">
+                  <h3 className="font-semibold text-lg mb-2">Product Video:</h3>
+                  <div className="aspect-w-16 aspect-h-9">
+                    <iframe
+                      src={`https://www.youtube.com/embed/${getYouTubeVideoId(product.ytURL)}`}
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      className="w-full h-full"
+                    ></iframe>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
           <hr className="my-10" />
@@ -51,5 +127,12 @@ const ProductIdPage = async ({ params }: { params: { productId: string } }) => {
     </>
   );
 };
+
+// Helper function to extract YouTube video ID
+function getYouTubeVideoId(url: string): string {
+  const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+  const match = url.match(regExp);
+  return (match && match[2].length === 11) ? match[2] : '';
+}
 
 export default ProductIdPage;
