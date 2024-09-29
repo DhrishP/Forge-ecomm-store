@@ -6,6 +6,8 @@ import ShoppingIcon from "./shoppingIcon";
 import ThemeButton from "./theme-button";
 
 const Navbar = async () => {
+
+  
   const data = await getCategories();
 
   return (
